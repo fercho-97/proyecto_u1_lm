@@ -4,47 +4,44 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class CitaMedica {
-	
+
 	private LocalDateTime fechaCita;
 
-	//2) DI por constructor
+	// 2) DI por constructor
 	private Doctor doctor;
 	private Paciente paciente;
-	
-	
-	public CitaMedica(Doctor doctor, Paciente paciente) {  // instancia  apartir de constructor
+
+	public CitaMedica(Doctor doctor, Paciente paciente) { // instancia apartir de constructor
 		// TODO Auto-generated constructor stub
-		
-		this.doctor=doctor;
-		this.paciente=paciente;
-	
+
+		this.doctor = doctor;
+		this.paciente = paciente;
+
 	}
-	
-	
-	public String agendar(LocalDateTime fechaCita,String nombre, String apellido, 
-			int edad, String ciudad,String nombrePaciente, int edadPaceinte) {
-		
+
+	public String agendar(LocalDateTime fechaCita, String nombre, String apellido, int edad, String ciudad,
+			String nombrePaciente, int edadPaceinte) {
+
 		this.doctor.setNombre(nombre);
 		this.doctor.setApellido(apellido);
 		this.doctor.setEdad(edad);
 		this.doctor.setCiudad(ciudad);
-		
+
 		this.paciente.setNombre(nombrePaciente);
 		this.paciente.setEdad(edadPaceinte);
-		//se inserta la cita en la base de datos
-	
-		this.fechaCita= fechaCita;
-		
+		// se inserta la cita en la base de datos
+
+		this.fechaCita = fechaCita;
+
 		//
-		
+
 		return "Cita agendada";
-		
+
 	}
-	
-	//SET Y GET
+
+	// SET Y GET
 
 	public Doctor getDoctor() {
 		return doctor;
@@ -70,5 +67,4 @@ public class CitaMedica {
 		this.fechaCita = fechaCita;
 	}
 
-	
 }

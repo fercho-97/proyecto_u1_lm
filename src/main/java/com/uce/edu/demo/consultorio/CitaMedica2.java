@@ -10,7 +10,7 @@ public class CitaMedica2 {
 
 	private LocalDateTime fechaCita;
 
-	//3) DI por metodos SET
+	// 3) DI por metodos SET
 	private Doctor doctor; // a su metodo SET le aumento @Autoired
 	private Paciente paciente; // a su metodo SET le aumento @Autoired
 
@@ -44,10 +44,11 @@ public class CitaMedica2 {
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
-	
+
 	public Paciente getPaciente() {
 		return paciente;
 	}
+
 	@Autowired
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
