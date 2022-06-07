@@ -7,11 +7,11 @@ import com.uce.edu.demo.modelo.Estudiante;
 import com.uce.edu.demo.repository.IEstudianteRepository;
 
 @Service
-public class EstudianteServiceImpl implements IEstudianteService{
+public class EstudianteServiceImpl implements IEstudianteService {
 
 	@Autowired
 	IEstudianteRepository estuRepository;
-	
+
 	@Override
 	public void insertarEstudiante(Estudiante e) {
 		// TODO Auto-generated method stub

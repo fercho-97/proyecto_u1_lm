@@ -7,9 +7,13 @@ public class Matricula {
 	private String numero;
 	private Estudiante estudiante;
 	private List<Materia> materia;
-	
-	
-	//SET Y GET
+
+	@Override
+	public String toString() {
+		return "Matricula [numero=" + numero + ", estudiante=" + estudiante + ", materia=" + materia + "]";
+	}
+
+	// SET Y GET
 	public String getNumero() {
 		return numero;
 	}

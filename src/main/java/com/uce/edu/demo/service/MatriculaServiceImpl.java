@@ -20,9 +20,9 @@ public class MatriculaServiceImpl implements IMatriculaService {
 	}
 
 	@Override
-	public Matricula buscar(String nombre) {
+	public Matricula buscar(String numero) {
 		// TODO Auto-generated method stub
-		return this.matriculaRepository.buscar(nombre);
+		return this.matriculaRepository.buscar(numero);
 	}
 
 	@Override
@@ -32,9 +32,9 @@ public class MatriculaServiceImpl implements IMatriculaService {
 	}
 
 	@Override
-	public void borrar(String nombre) {
+	public void borrar(String numero) {
 		// TODO Auto-generated method stub
-		this.matriculaRepository.borrar(nombre);
+		this.matriculaRepository.borrar(numero);
 	}
 
 }
