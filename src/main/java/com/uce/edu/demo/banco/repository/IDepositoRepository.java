@@ -6,5 +6,10 @@ public interface IDepositoRepository {
 	
 	public void insertarDeposito(Deposito d);
 	
+	public Deposito buscar(String numeroCuentaDestino);
+	
+	public void actualizar(String numeroCuentaDestino);
+
+	public void borrar(String numeroCuentaDestino);
 
 }

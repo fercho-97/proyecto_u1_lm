@@ -23,11 +23,11 @@ public class DepositoServiceImpl implements IDepositoService {
 	public void realizarDeposito(String numeroCtaDestino, BigDecimal monto) {
 		// TODO Auto-generated method stub
 
-		CuentaBancaria ctaDestino = this.iBancariaService.buscar(numeroCtaDestino);
+		CuentaBancaria ctaDestino = this.iBancariaService.buscarCuenta(numeroCtaDestino);
 		BigDecimal saldoCtdestino = ctaDestino.getSaldo();
 		BigDecimal saldoFinal = saldoCtdestino.add(monto);
 		ctaDestino.setSaldo(saldoFinal);
-		this.iBancariaService.actualizar(ctaDestino);
+		this.iBancariaService.actualizarCuenta(ctaDestino);
 
 		Deposito deposito = new Deposito();
 		deposito.setFecha(LocalDateTime.now());
@@ -35,6 +35,24 @@ public class DepositoServiceImpl implements IDepositoService {
 		deposito.setMonto(monto);
 		this.iDepositoRepository.insertarDeposito(deposito);
 
+	}
+
+	@Override
+	public Deposito buscarDeposito(String ctaDestino) {
+		// TODO Auto-generated method stub
+		return this.iDepositoRepository.buscar(ctaDestino);
+	}
+
+	@Override
+	public void actualizarDeposito(String numeroCuentaDestino) {
+		// TODO Auto-generated method stub
+		this.iDepositoRepository.actualizar(numeroCuentaDestino);
+	}
+
+	@Override
+	public void borrarDeposito(String ctaDestino) {
+		// TODO Auto-generated method stub
+		this.iDepositoRepository.borrar(ctaDestino);
 	}
 
 }

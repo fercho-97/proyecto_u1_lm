@@ -13,4 +13,25 @@ public class DepositoRepositoryImpl implements IDepositoRepository {
 		System.out.println("se creo el deposito: " + d);
 	}
 
+	@Override
+	public Deposito buscar(String numeroCuentaDestino) {
+		// TODO Auto-generated method stub
+		System.out.println("Se ha buscado en la base el deposito con la cuenta de destino: " + numeroCuentaDestino);
+		Deposito d = new Deposito();
+		d.setNumeroCuentaDestino(numeroCuentaDestino);
+		return d;
+	}
+
+	@Override
+	public void actualizar(String numeroCuentaDestino) {
+		// TODO Auto-generated method stub
+		System.out.println("Se ha actualizado en la base el deposito con la cuenta de destino: " + numeroCuentaDestino);
+	}
+
+	@Override
+	public void borrar(String numeroCuentaDestino) {
+		// TODO Auto-generated method stub
+		System.out.println("Se ha borrado en la base el deposito con la cuenta de destino: " + numeroCuentaDestino);
+	}
+
 }

@@ -11,42 +11,59 @@ import com.uce.edu.demo.banco.modelo.Transferencia;
 import com.uce.edu.demo.banco.repository.ITransferenciaRepository;
 
 @Service
-public class TransferenciaServiceImpl implements ITransferenciaService{
+public class TransferenciaServiceImpl implements ITransferenciaService {
 
 	@Autowired
 	private ICuentaBancariaService bancariaService;
-	
+
 	@Autowired
 	private ITransferenciaRepository iTransferenciaRepository;
 
-	 
-	
-	
 	@Override
-	public void realizarTransferncia(String ctaOrigen, String ctaDestino, BigDecimal monto) {
+	public void realizarTransferencia(String ctaOrigen, String ctaDestino, BigDecimal monto) {
 		// TODO Auto-generated method stub
-		
-		CuentaBancaria cOrigen = this.bancariaService.buscar(ctaOrigen);
+
+		CuentaBancaria cOrigen = this.bancariaService.buscarCuenta(ctaOrigen);
 		BigDecimal saldoOrigen = cOrigen.getSaldo();
 		BigDecimal nuevoSaldoOrigen = saldoOrigen.subtract(monto);
 		cOrigen.setSaldo(nuevoSaldoOrigen);
-		this.bancariaService.actualizar(cOrigen);
-		
-		
-		CuentaBancaria cDestino = this.bancariaService.buscar(ctaDestino);
+		this.bancariaService.actualizarCuenta(cOrigen);
+
+		CuentaBancaria cDestino = this.bancariaService.buscarCuenta(ctaDestino);
 		BigDecimal saldoDestino = cDestino.getSaldo();
 		BigDecimal nuevoSaldoDestino = saldoDestino.add(monto);
 		cDestino.setSaldo(nuevoSaldoDestino);
-		this.bancariaService.actualizar(cDestino);
-		
+		this.bancariaService.actualizarCuenta(cDestino);
+
 		Transferencia t = new Transferencia();
 		t.setNumeroCuentaOrigen(ctaOrigen);
 		t.setNumeroCuentaDestino(ctaDestino);
 		t.setMontoTransferir(monto);
 		t.setFechaTransferencia(LocalDateTime.now());
+
 		
 		this.iTransferenciaRepository.insertar(t);
-		
+	}
+
+	@Override
+	public Transferencia buscarTransferencia(String ctaOrigen) {
+		// TODO Auto-generated method stub
+
+		return this.iTransferenciaRepository.buscar(ctaOrigen);
+	}
+
+	@Override
+	public void actualizarTransferencia(String numeroCuentaOrigen) {
+		// TODO Auto-generated method stub
+
+		this.iTransferenciaRepository.actualizar(numeroCuentaOrigen);
+	}
+
+	@Override
+	public void borrarTransferencia(String numeroCuentaOrigen) {
+		// TODO Auto-generated method stub
+
+		this.iTransferenciaRepository.borrar(numeroCuentaOrigen);
 	}
 
 }
