@@ -20,7 +20,7 @@ public class RetiroServiceImpl implements IRetiroService {
 	private IRetiroRepository iRetiroRepository;
 
 	@Override
-	public void realizarRetiro(String ctaOrigen, BigDecimal monto, String numTransaccion) {
+	public void realizarRetiro(String ctaOrigen, BigDecimal monto) {
 		// TODO Auto-generated method stub
 		CuentaBancaria cOrigen = this.iCuentaBancariaService.buscarCuenta(ctaOrigen);
 		BigDecimal saldoOrigen = cOrigen.getSaldo();
@@ -31,28 +31,27 @@ public class RetiroServiceImpl implements IRetiroService {
 		Retiro r = new Retiro();
 		r.setNumeroCuentaOrigen(ctaOrigen);
 		r.setMontoTransferir(monto);
-		r.setNumeroTransaccion(numTransaccion);
 		r.setFechaTransferencia(LocalDateTime.now());
 
 		this.iRetiroRepository.insertar(r);
 	}
 
 	@Override
-	public Retiro buscarRetiro(String numeroTransaccion) {
+	public Retiro buscarRetiro(String ctaOrigen) {
 		// TODO Auto-generated method stub
-		return this.iRetiroRepository.buscar(numeroTransaccion);
+		return this.iRetiroRepository.buscar(ctaOrigen);
 	}
 
 	@Override
-	public void actualizarRetiro(String numeroTransaccion) {
+	public void actualizarRetiro(String ctaOrigen) {
 		// TODO Auto-generated method stub
-		this.iRetiroRepository.actualizar(numeroTransaccion);
+		this.iRetiroRepository.actualizar(ctaOrigen);
 	}
 
 	@Override
-	public void borrarRetiro(String numeroTransaccion) {
+	public void borrarRetiro(String ctaOrigen) {
 		// TODO Auto-generated method stub
-		this.iRetiroRepository.borrar(numeroTransaccion);
+		this.iRetiroRepository.borrar(ctaOrigen);
 	}
 
 }

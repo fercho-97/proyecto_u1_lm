@@ -1,5 +1,10 @@
 package com.uce.edu.demo.banco.repository;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.demo.banco.modelo.Transferencia;
@@ -36,6 +41,24 @@ public class TransferenciaRepositoryImpl implements ITransferenciaRepository {
 		// TODO Auto-generated method stub
 		System.out.println("Se ha eliminado en la base la transferncia con la cuenta de origen: " + numerCuentaOrigen);
 
+	}
+
+	@Override
+	public List<Transferencia> consultar(String cuenta, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+		// TODO Auto-generated method stub
+		//aqui deberia estar e sql a la base
+		
+		List<Transferencia> listaConsulta = new ArrayList<>();
+		Transferencia trans1 = new Transferencia();
+		trans1.setFechaTransferencia(LocalDateTime.now());
+		trans1.setMontoTransferir(new BigDecimal(100));
+		trans1.setNumeroCuentaOrigen("1234");
+		trans1.setNumeroCuentaDestino("12567");
+		
+		listaConsulta.add(trans1);
+		
+		
+		return listaConsulta;
 	}
 
 }

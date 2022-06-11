@@ -43,10 +43,10 @@ public class ProyectoU1LmApplication implements CommandLineRunner {
 		this.iDepositoService.buscarDeposito("14");
 
 		System.out.println("RETIRO-------");
-		this.iRetiroService.realizarRetiro("15", new BigDecimal(30), "R001");
-		this.iRetiroService.actualizarRetiro("R001");
-		this.iRetiroService.buscarRetiro("R001");
-		this.iRetiroService.borrarRetiro("R001");
+		this.iRetiroService.realizarRetiro("15", new BigDecimal(30));
+		this.iRetiroService.actualizarRetiro("15");
+		this.iRetiroService.buscarRetiro("15");
+		this.iRetiroService.borrarRetiro("15");
 
 	}
 

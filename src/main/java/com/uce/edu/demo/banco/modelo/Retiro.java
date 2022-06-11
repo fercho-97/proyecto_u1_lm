@@ -6,15 +6,14 @@ import java.time.LocalDateTime;
 public class Retiro {
 
 	private String numeroCuentaOrigen;
-	private String numeroTransaccion;
+
 	private BigDecimal montoTransferir;
 	private LocalDateTime fechaTransferencia;
 
 	@Override
 	public String toString() {
 		return "Retiro [numeroCuentaOrigen=" + numeroCuentaOrigen + ", numeroCuentaDestino=" + ", numeroTransaccion="
-				+ numeroTransaccion + ", montoTransferir=" + montoTransferir + ", fechaTransferencia="
-				+ fechaTransferencia + "]";
+				+ ", montoTransferir=" + montoTransferir + ", fechaTransferencia=" + fechaTransferencia + "]";
 	}
 
 	// SET Y GET
@@ -24,14 +23,6 @@ public class Retiro {
 
 	public void setNumeroCuentaOrigen(String numeroCuentaOrigen) {
 		this.numeroCuentaOrigen = numeroCuentaOrigen;
-	}
-
-	public String getNumeroTransaccion() {
-		return numeroTransaccion;
-	}
-
-	public void setNumeroTransaccion(String numeroTransaccion) {
-		this.numeroTransaccion = numeroTransaccion;
 	}
 
 	public BigDecimal getMontoTransferir() {

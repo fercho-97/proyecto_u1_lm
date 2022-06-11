@@ -1,17 +1,21 @@
 package com.uce.edu.demo.banco.service;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import com.uce.edu.demo.banco.modelo.Transferencia;
 
 public interface ITransferenciaService {
-	
-	public void realizarTransferencia (String ctaOrigen,String ctaDestino, BigDecimal monto);
+
+	public void realizarTransferencia(String ctaOrigen, String ctaDestino, BigDecimal monto);
 
 	public Transferencia buscarTransferencia(String ctaOrigen);
-	
-	public void actualizarTransferencia (String numeroCuentaOrigen);
-	
+
+	public void actualizarTransferencia(String numeroCuentaOrigen);
+
 	public void borrarTransferencia(String ctaOrigen);
+	
+	public List<Transferencia> consultar(String cuenta, LocalDateTime fechaInicio, LocalDateTime fechaRetiro);
 
 }
