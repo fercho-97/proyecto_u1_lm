@@ -20,7 +20,7 @@ import com.uce.edu.demo.banco.to.TransaccionTo;
 public class TransaccionServiceImpl implements ITransaccionService {
 
 	@Autowired
-	private ITransaccionService iTransferenciaService;
+	private ITransferenciaService iTransferenciaService;
 
 	@Autowired
 	private IDepositoService iDepositoService;
@@ -40,7 +40,7 @@ public class TransaccionServiceImpl implements ITransaccionService {
 	@Override
 	public void transferecia(String cuentaOrigen, String cuentaDestino, BigDecimal monto) {
 		// TODO Auto-generated method stub
-		this.iTransferenciaService.transferecia(cuentaOrigen, cuentaDestino, monto);
+		this.iTransferenciaService.realizarTransferencia(cuentaOrigen, cuentaDestino, monto);
 	}
 
 	@Override
