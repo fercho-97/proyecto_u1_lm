@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.uce.edu.demo.banco.modelo.CuentaBancaria;
@@ -15,6 +16,7 @@ import com.uce.edu.demo.banco.repository.ITransferenciaRepository;
 public class TransferenciaServiceImpl implements ITransferenciaService {
 
 	@Autowired
+	@Qualifier("ahorros")
 	private ICuentaBancariaService bancariaService;
 
 	@Autowired
@@ -69,7 +71,7 @@ public class TransferenciaServiceImpl implements ITransferenciaService {
 	@Override
 	public List<Transferencia> consultar(String cuenta, LocalDateTime fechaInicio, LocalDateTime fechaRetiro) {
 		// TODO Auto-generated method stub
-		// no deberia ir
+		// no deberia ir no hay lógica de negocio
 		return this.iTransferenciaRepository.consultar(cuenta, fechaInicio, fechaRetiro);
 	}
 
