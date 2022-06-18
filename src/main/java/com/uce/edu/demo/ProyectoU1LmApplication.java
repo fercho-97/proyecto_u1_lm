@@ -1,35 +1,37 @@
 package com.uce.edu.demo;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.farmaceutica.modelo.Empresa;
-import com.uce.edu.demo.farmaceutica.modelo.Etiqueta;
-import com.uce.edu.demo.farmaceutica.modelo.Medicamento;
-import com.uce.edu.demo.farmaceutica.service.IEtiquetaService;
-import com.uce.edu.demo.farmaceutica.service.IMedicamentoService;
+import com.uce.edu.demo.modelo.Estudiante;
+import com.uce.edu.demo.modelo.Materia;
+import com.uce.edu.demo.modelo.Matricula;
 import com.uce.edu.demo.modelo.ProfesorGeneral;
 import com.uce.edu.demo.modelo.ProfesorMateria;
+import com.uce.edu.demo.service.IMatriculaService;
 
 @SpringBootApplication
 public class ProyectoU1LmApplication implements CommandLineRunner {
 
-	@Autowired
-	private Empresa empresa1;
 
 	@Autowired
-	private Empresa empresa2;
+	private ProfesorGeneral general;
 
 	@Autowired
-	private IMedicamentoService iMedicamentoService;
+	private ProfesorGeneral general1;
 
 	@Autowired
-	private IEtiquetaService iEtiquetaService;
+	private ProfesorMateria materia;
+
+	@Autowired
+	private ProfesorMateria materia1;
+
+	@Autowired
+	private IMatriculaService iMatriculaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1LmApplication.class, args);
@@ -39,48 +41,36 @@ public class ProyectoU1LmApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		System.out.println("EJEMPLO SINGLETON");
+		this.general.setNombre("Edison");
+		this.general.setApellido("Cayambe");
 
-		this.empresa1.setAutorizacion("1058");
-		this.empresa1.setNombre("Cantabria Labs");
-		System.out.println("Empresa1: " + empresa1);
+		System.out.println(this.general);
+		System.out.println("----");
+		System.out.println(this.general1);
 
-		this.empresa2.setAutorizacion("999");
-		this.empresa2.setNombre("BAGO");
-		System.out.println("Empresa2: " + empresa2);
+		this.general1.setNombre("Pepito");
+		System.out.println("----");
+		System.out.println(this.general);
 
-		System.out.println("Se crea una unica referencia de empresa");
-		System.out.println("Empresa1: " + empresa1);
-		
+		System.out.println("----");
+		System.out.println(this.general1);
 
 		System.out.println("EJEMPLO PROTOTYPE");
+		this.materia.setNombre("Juan");
+		this.materia.setApellido("Jimenez");
+		System.out.println(this.materia);
 
-		Medicamento m1 = new Medicamento();
-		m1.setNombre("aspirina");
-		m1.setPrecio(new BigDecimal(10));
-		m1.setTipo("salicilatos");
-		this.iMedicamentoService.insertarMedicamento(m1);
+		System.out.println("-----");
+		System.out.println(this.materia1);
 
-		Etiqueta et1 = new Etiqueta();
-		et1.setEmpresa(empresa1);
-		et1.setMedicamento(m1);
-		et1.setId("001");
-		et1.setFechaElaboracion(LocalDate.of(2022, 01, 15));
-		this.iEtiquetaService.insertarEtiqueta(et1);
+		System.out.println("-----");
 
-		Medicamento m2 = new Medicamento();
-		m2.setNombre("acnotin");
-		m2.setPrecio(new BigDecimal(25));
-		m2.setTipo("isotretinoina");
-		this.iMedicamentoService.insertarMedicamento(m2);
+		Matricula matricula1 = new Matricula();
+		matricula1.setEstudiante(new Estudiante());
+		matricula1.setMateria(new ArrayList<Materia>());
+		matricula1.setNumero("1234");
+		this.iMatriculaService.insertar(matricula1);
 
-		Etiqueta et2 = new Etiqueta();
-		et2.setEmpresa(empresa2);
-		et2.setMedicamento(m2);
-		et2.setId("002");
-		et2.setFechaElaboracion(LocalDate.of(2022, 02, 15));
-		this.iEtiquetaService.insertarEtiqueta(et2);
-
-		System.out.println("Se crea referencias independientes de medicamento");
 	}
 
 }
